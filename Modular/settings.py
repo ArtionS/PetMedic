@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'pet.apps.PetConfig',
     'page.apps.PageConfig',
     'user.apps.UserConfig',
-
+    'process.apps.ProcessConfig',
+    'vaccine.apps.VaccineConfig',
 
 ]
 

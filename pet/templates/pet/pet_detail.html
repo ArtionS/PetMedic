@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<h1> Pet Detail </h1>
+<h1> {{pet}} Pet Detail {{pet.id}} </h1>
 <br>
 <a href="{% url 'pet_list' %}"> Go Back</a>
 <br>
@@ -39,11 +39,11 @@
                 <td>{{pet.gender}}</td>
                 <td>{{pet.description}}</td>
                 <td>{{pet.birth_day}}</td>
-                <td>{{pet.fhoto}}</td>
+                <td>{{pet.picture}}</td>
 
-                <td>Vaccines</td>
-                <td>Process</td>
-                <td><a href="{% url 'pet_update' pet.id %}">Buton Update</a> </td>
+                <td><a href="{% url 'vaccine_list' pet.id %}">Vacines</a> </td>
+                <td><a href="{% url 'process_list' pet.id %}">Processes</a> </td>
+                <td><a href="{% url 'pet_update' pet.id %}">Update</a> </td>
             </tr>
         </table>
     <br>

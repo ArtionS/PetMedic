@@ -14,14 +14,16 @@ from .models import Pet
 # Create your views here.
 
 
-
 class PetList(LoginRequiredMixin, ListView):
     model = Pet
     context_object_name = 'pets'
-    template_name = 'base/pet_list.html'
+    template_name = 'pet/pet_list.html'
 
     def get_context_data(self, **kwargs):
+        print(kwargs)
         context = super().get_context_data(**kwargs)
+        print(context)
+
         context['pets'] = context['pets'].filter(owner=self.request.user)
 
         search_input = self.request.GET.get('search-area') or ''
@@ -36,7 +38,7 @@ class PetList(LoginRequiredMixin, ListView):
 class PetDetail(LoginRequiredMixin, DetailView):
     model = Pet
     context_object_name = 'pet'
-    template_name = 'base/pet_detail.html'
+    template_name = 'pet/pet_detail.html'
 
 
 class PetCreate(LoginRequiredMixin, CreateView):
@@ -52,13 +54,12 @@ class PetCreate(LoginRequiredMixin, CreateView):
         'picture',
         ]
 
-    template_name = 'base/pet_form.html'
+    template_name = 'pet/pet_form.html'
     success_url = reverse_lazy('pet_list')
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super(PetCreate, self).form_valid(form)
-
 
 
     # context_object_name = 'pet'
@@ -83,6 +84,6 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
 
 class PetDelete(LoginRequiredMixin, DeleteView):
     model = Pet
-    template_name = 'base/pet_confirm_delete.html'
+    template_name = 'pet/pet_confirm_delete.html'
     context_object_name = 'pet'
     success_url = reverse_lazy('pet_list')
