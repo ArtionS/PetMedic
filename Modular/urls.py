@@ -21,4 +21,6 @@ urlpatterns = [
     path('', include('pet.urls')),
     path('', include('page.urls')),
     path('', include('user.urls')),
+    path('', include('process.urls')),
+    path('', include('vaccine.urls'))
 ]

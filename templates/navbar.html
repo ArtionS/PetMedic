@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Pets</a>
+                    <a class="nav-link" href="{% url 'pet_list' %}">Pets</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -77,7 +77,7 @@
                 |
                 <a style=" margin-left: 0.5em; " href="{% url 'logout' %}">Logout</a>
 
-                {% else %}}
+                {% else %}
                 <a style=" margin-left: 0.5em; " href="{% url 'login' %}">Login</a>
 
                 {% endif %}
